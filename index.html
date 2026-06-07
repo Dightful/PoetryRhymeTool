@@ -685,8 +685,8 @@ function renderRhymeGroup(word, rhymes) {
   });
 
   rhymesScroll.appendChild(group);
-  // Scroll to the newest group
-  group.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Scroll the rhymes container to show the newest group
+  rhymesScroll.scrollTop = rhymesScroll.scrollHeight;
 }
 
 // ── Clear rhyme panel (used only by Clear All) ─────────────────────────
