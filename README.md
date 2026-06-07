@@ -4,7 +4,7 @@
 
 ### A free, browser-based poetry tool with live rhyme suggestions
 
-**[▶ Open the App](https://yourusername.github.io/poetry-writer)**
+**[▶ Open the App](https://dightful.github.io/PoetryRhymeTool/)**
 
 ![HTML](https://img.shields.io/badge/HTML-Pure-c49a55?style=flat-square&logo=html5&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-1a1208?style=flat-square&logo=javascript)
