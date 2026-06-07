@@ -602,12 +602,10 @@ function submitLine() {
   lineInput.value = '';
   lineInput.focus();
 
-  // Fetch rhymes
+  // Fetch rhymes and stack them — don't clear old ones
   if (tagged.length > 0) {
-    clearRhymes();
+    rhymesEmpty.style.display = 'none';
     tagged.forEach(word => fetchRhymes(word));
-  } else {
-    clearRhymes();
   }
 }
 
@@ -687,11 +685,12 @@ function renderRhymeGroup(word, rhymes) {
   });
 
   rhymesScroll.appendChild(group);
+  // Scroll to the newest group
+  group.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ── Clear rhyme panel ──────────────────────────────────────────────────
+// ── Clear rhyme panel (used only by Clear All) ─────────────────────────
 function clearRhymes() {
-  // Remove everything except the empty label
   [...rhymesScroll.children].forEach(el => {
     if (el !== rhymesEmpty) el.remove();
   });
