@@ -255,13 +255,13 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding-bottom: 0;
+    padding: 0;
   }
 
   .rhymes-scroll {
     flex: 1;
     overflow-y: auto;
-    padding: 0 28px 20px;
+    padding: 8px 28px 20px;
     scrollbar-width: thin;
     scrollbar-color: var(--divider) transparent;
   }
@@ -538,14 +538,14 @@
       </div>
 
       <!-- Rhymes section -->
-      <div class="pane-section rhymes-area" style="padding-bottom:0; border-top: 1px solid var(--divider);">
-        <div class="section-label">Rhyme suggestions</div>
-      </div>
-      <div class="rhymes-scroll" id="rhymesScroll">
-        <div class="rhymes-empty" id="rhymesEmpty">
-          <span class="ornament">❧</span>
-          Type a line above and place <code style="font-style:normal; background:var(--paper-mid); padding:1px 5px; border-radius:2px; font-size:13px; color:var(--rust);">#</code> after a word<br>
-          to see rhymes for it here
+      <div class="rhymes-area" style="border-top: 1px solid var(--divider);">
+        <div class="section-label" style="padding: 14px 28px 0; flex-shrink:0;">Rhyme suggestions</div>
+        <div class="rhymes-scroll" id="rhymesScroll">
+          <div class="rhymes-empty" id="rhymesEmpty">
+            <span class="ornament">❧</span>
+            Type a line above and place <code style="font-style:normal; background:var(--paper-mid); padding:1px 5px; border-radius:2px; font-size:13px; color:var(--rust);">#</code> after a word<br>
+            to see rhymes for it here
+          </div>
         </div>
       </div>
 
