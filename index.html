@@ -179,6 +179,9 @@
     outline: none;
     transition: border-color 0.2s;
     line-height: 1.5;
+    resize: none;
+    overflow: hidden;
+    display: block;
   }
 
   .line-input::placeholder {
@@ -520,14 +523,14 @@
       <!-- Input section -->
       <div class="pane-section input-area">
         <div class="section-label">Write your line</div>
-        <input
-          type="text"
+        <textarea
           class="line-input"
           id="lineInput"
           placeholder="e.g.  The cat# sat on the mat…"
           autocomplete="off"
           spellcheck="true"
-        >
+          rows="2"
+        ></textarea>
         <p class="input-hint">
           Put <code>#</code> after any word to see rhymes &mdash; use multiple <code>#</code> for several words
         </p>
@@ -584,13 +587,29 @@ const lineCount    = document.getElementById('lineCount');
 
 // ── Enter key ──────────────────────────────────────────────────────────
 lineInput.addEventListener('keydown', e => {
-  if (e.key === 'Enter') submitLine();
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    submitLine();
+  }
+});
+
+// Auto-resize the textarea as the user types
+lineInput.addEventListener('input', () => {
+  lineInput.style.height = 'auto';
+  lineInput.style.height = lineInput.scrollHeight + 'px';
 });
 
 // ── Submit a line ──────────────────────────────────────────────────────
 function submitLine() {
   const raw = lineInput.value.trim();
-  if (!raw) return;
+
+  // Empty input = blank line (paragraph break)
+  if (!raw) {
+    poemLines.push('');
+    renderPoem();
+    lineInput.focus();
+    return;
+  }
 
   // Find tagged words (word#)
   const tagged = findTagged(raw);
@@ -600,6 +619,7 @@ function submitLine() {
   poemLines.push(clean);
   renderPoem();
   lineInput.value = '';
+  lineInput.style.height = 'auto';
   lineInput.focus();
 
   // Fetch rhymes and stack them — don't clear old ones
@@ -623,7 +643,7 @@ async function fetchRhymes(word) {
   loadEl.className = 'loading-row';
   loadEl.id = loadId;
   loadEl.innerHTML = `<div class="spinner"></div><span>Finding rhymes for <em>${word}</em>…</span>`;
-  rhymesScroll.insertBefore(loadEl, rhymesEmpty.nextSibling);
+  rhymesScroll.insertBefore(loadEl, rhymesScroll.firstChild);
 
   try {
     let url = `https://api.datamuse.com/words?rel_rhy=${encodeURIComponent(word)}&md=d&max=10`;
@@ -684,8 +704,8 @@ function renderRhymeGroup(word, rhymes) {
     group.appendChild(row);
   });
 
-  // Insert newest group at the top, below the empty label
-  rhymesScroll.insertBefore(group, rhymesEmpty.nextSibling);
+  // Insert newest group at the very top of the scroll container
+  rhymesScroll.insertBefore(group, rhymesScroll.firstChild);
 }
 
 // ── Clear rhyme panel (used only by Clear All) ─────────────────────────
@@ -751,6 +771,7 @@ function clearAll() {
   renderPoem();
   clearRhymes();
   lineInput.value = '';
+  lineInput.style.height = 'auto';
   lineInput.focus();
 }
 
