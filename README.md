@@ -112,7 +112,7 @@ No build tools or installs needed. Just open the file:
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/poetry-writer.git
+git clone https://dightful.github.io/PoetryRhymeTool.git
 
 # Open in browser (Mac)
 open index.html
@@ -143,7 +143,5 @@ MIT — free to use, fork, and modify.
 ---
 
 <div align="center">
-
-Made with care &nbsp;✦&nbsp; [Open the App](https://yourusername.github.io/poetry-writer)
 
 </div>
