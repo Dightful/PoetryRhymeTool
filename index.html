@@ -170,15 +170,15 @@
   .line-input {
     width: 100%;
     font-family: var(--font-body);
-    font-size: 17px;
+    font-size: 22px;
     color: var(--ink);
     background: transparent;
     border: none;
     border-bottom: 2px solid var(--divider);
-    padding: 8px 0 10px;
+    padding: 6px 0 4px;
     outline: none;
     transition: border-color 0.2s;
-    line-height: 1.5;
+    line-height: 1.4;
     resize: none;
     overflow: hidden;
     display: block;
@@ -187,7 +187,7 @@
   .line-input::placeholder {
     color: var(--ink-faint);
     font-style: italic;
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .line-input:focus {
@@ -607,6 +607,7 @@ function submitLine() {
   if (!raw) {
     poemLines.push('');
     renderPoem();
+    showToast('¶  Blank line added — new stanza started');
     lineInput.focus();
     return;
   }
