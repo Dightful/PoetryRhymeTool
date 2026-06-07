@@ -623,7 +623,7 @@ async function fetchRhymes(word) {
   loadEl.className = 'loading-row';
   loadEl.id = loadId;
   loadEl.innerHTML = `<div class="spinner"></div><span>Finding rhymes for <em>${word}</em>…</span>`;
-  rhymesScroll.appendChild(loadEl);
+  rhymesScroll.insertBefore(loadEl, rhymesEmpty.nextSibling);
 
   try {
     let url = `https://api.datamuse.com/words?rel_rhy=${encodeURIComponent(word)}&md=d&max=10`;
@@ -684,9 +684,8 @@ function renderRhymeGroup(word, rhymes) {
     group.appendChild(row);
   });
 
-  rhymesScroll.appendChild(group);
-  // Scroll the rhymes container to show the newest group
-  rhymesScroll.scrollTop = rhymesScroll.scrollHeight;
+  // Insert newest group at the top, below the empty label
+  rhymesScroll.insertBefore(group, rhymesEmpty.nextSibling);
 }
 
 // ── Clear rhyme panel (used only by Clear All) ─────────────────────────
