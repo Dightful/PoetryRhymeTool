@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 
 <style>
-  /* ── Reset & base ─────────────────────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -25,7 +24,6 @@
     --sage:       #4a6741;
     --divider:    #c8b99a;
     --shadow:     rgba(26,18,8,0.12);
-
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body:    'EB Garamond', Georgia, serif;
     --font-verse:   'Cormorant Garamond', Georgia, serif;
@@ -41,12 +39,7 @@
     overflow: hidden;
   }
 
-  /* ── Layout shell ─────────────────────────────────────────────────── */
-  .app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
+  .app { display: flex; flex-direction: column; height: 100vh; }
 
   /* ── Header ───────────────────────────────────────────────────────── */
   header {
@@ -59,7 +52,6 @@
     flex-shrink: 0;
     position: relative;
   }
-
   header::after {
     content: '';
     position: absolute;
@@ -67,429 +59,260 @@
     height: 3px;
     background: linear-gradient(90deg, var(--rust), var(--gold), var(--rust));
   }
-
-  .header-title {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-  }
-
+  .header-title { display: flex; align-items: baseline; gap: 14px; }
   .header-title h1 {
     font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    color: var(--paper);
+    font-size: 22px; font-weight: 600;
+    letter-spacing: 0.03em; color: var(--paper);
   }
-
   .header-title span {
     font-family: var(--font-body);
-    font-size: 13px;
-    color: var(--divider);
-    font-style: italic;
+    font-size: 13px; color: var(--divider); font-style: italic;
   }
-
-  .header-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
+  .header-actions { display: flex; gap: 10px; align-items: center; }
 
   .btn {
     font-family: var(--font-body);
-    font-size: 13px;
-    padding: 7px 18px;
-    border-radius: 3px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    letter-spacing: 0.04em;
-    transition: all 0.18s ease;
+    font-size: 13px; padding: 7px 18px;
+    border-radius: 3px; border: 1px solid transparent;
+    cursor: pointer; letter-spacing: 0.04em; transition: all 0.18s ease;
   }
-
   .btn-ghost {
-    background: transparent;
-    border-color: var(--divider);
-    color: var(--paper-dark);
+    background: transparent; border-color: var(--divider); color: var(--paper-dark);
   }
   .btn-ghost:hover {
-    background: rgba(245,240,232,0.12);
-    border-color: var(--paper);
-    color: var(--paper);
+    background: rgba(245,240,232,0.12); border-color: var(--paper); color: var(--paper);
   }
-
   .btn-gold {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--paper);
-    font-weight: 500;
+    background: var(--gold); border-color: var(--gold); color: var(--paper); font-weight: 500;
   }
-  .btn-gold:hover {
-    background: var(--gold-light);
-    border-color: var(--gold-light);
-  }
+  .btn-gold:hover { background: var(--gold-light); border-color: var(--gold-light); }
 
   /* ── Main split ───────────────────────────────────────────────────── */
-  main {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-  }
+  main { display: flex; flex: 1; overflow: hidden; }
 
   /* ── Left pane ────────────────────────────────────────────────────── */
   .left-pane {
-    width: 46%;
-    min-width: 320px;
-    display: flex;
-    flex-direction: column;
+    width: 46%; min-width: 320px;
+    display: flex; flex-direction: column;
     background: var(--paper);
     border-right: 1px solid var(--divider);
     overflow: hidden;
   }
-
-  .pane-section {
-    padding: 22px 28px;
-  }
-
-  .pane-section + .pane-section {
-    border-top: 1px solid var(--divider);
-  }
-
+  .pane-section { padding: 18px 28px; }
+  .pane-section + .pane-section { border-top: 1px solid var(--divider); }
   .section-label {
     font-family: var(--font-display);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 12px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 10px;
   }
 
-  /* Input area */
+  /* ── Line input ───────────────────────────────────────────────────── */
   .input-area { flex-shrink: 0; }
-
   .line-input {
     width: 100%;
     font-family: var(--font-body);
-    font-size: 22px;
-    color: var(--ink);
-    background: transparent;
-    border: none;
+    font-size: 22px; color: var(--ink);
+    background: transparent; border: none;
     border-bottom: 2px solid var(--divider);
-    padding: 6px 0 4px;
-    outline: none;
-    transition: border-color 0.2s;
-    line-height: 1.4;
-    resize: none;
-    overflow: hidden;
-    display: block;
+    padding: 6px 0 4px; outline: none;
+    transition: border-color 0.2s; line-height: 1.4;
+    resize: none; overflow: hidden; display: block;
   }
+  .line-input::placeholder { color: var(--ink-faint); font-style: italic; font-size: 17px; }
+  .line-input:focus { border-bottom-color: var(--gold); }
 
-  .line-input::placeholder {
-    color: var(--ink-faint);
-    font-style: italic;
-    font-size: 17px;
-  }
-
-  .line-input:focus {
-    border-bottom-color: var(--gold);
-  }
-
-  .input-hint {
-    margin-top: 8px;
-    font-size: 12px;
-    color: var(--ink-faint);
-    font-style: italic;
-  }
-
+  .input-hint { margin-top: 8px; font-size: 12px; color: var(--ink-faint); font-style: italic; }
   .input-hint code {
-    font-style: normal;
-    background: var(--paper-mid);
-    padding: 1px 5px;
-    border-radius: 2px;
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    color: var(--rust);
+    font-style: normal; background: var(--paper-mid);
+    padding: 1px 5px; border-radius: 2px;
+    font-family: 'Courier New', monospace; font-size: 12px; color: var(--rust);
   }
-
-  .btn-row {
-    display: flex;
-    gap: 10px;
-    margin-top: 16px;
-  }
+  .btn-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
 
   .btn-add {
-    background: var(--ink);
-    color: var(--paper);
-    border: 1px solid var(--ink);
-    font-family: var(--font-body);
-    font-size: 14px;
-    padding: 9px 22px;
-    border-radius: 3px;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    transition: all 0.18s;
-    flex: 1;
+    background: var(--ink); color: var(--paper);
+    border: 1px solid var(--ink); font-family: var(--font-body);
+    font-size: 14px; padding: 9px 22px; border-radius: 3px;
+    cursor: pointer; letter-spacing: 0.05em; transition: all 0.18s; flex: 1;
   }
+  .btn-add:hover { background: var(--ink-light); }
 
-  .btn-add:hover {
-    background: var(--ink-light);
+  .btn-secondary {
+    background: transparent; color: var(--ink-faint);
+    border: 1px solid var(--divider); font-family: var(--font-body);
+    font-size: 14px; padding: 9px 14px; border-radius: 3px;
+    cursor: pointer; transition: all 0.18s; white-space: nowrap;
   }
+  .btn-secondary:hover { border-color: var(--ink-faint); color: var(--ink); }
 
-  .btn-undo {
-    background: transparent;
-    color: var(--ink-faint);
-    border: 1px solid var(--divider);
-    font-family: var(--font-body);
-    font-size: 14px;
-    padding: 9px 18px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.18s;
+  /* ── Rhyme lookup box ─────────────────────────────────────────────── */
+  .lookup-area { flex-shrink: 0; }
+  .lookup-row { display: flex; gap: 8px; align-items: stretch; }
+  .lookup-input {
+    flex: 1; font-family: var(--font-body); font-size: 16px;
+    color: var(--ink); background: var(--paper-mid);
+    border: 1px solid var(--divider); border-radius: 3px;
+    padding: 7px 12px; outline: none; transition: border-color 0.2s;
   }
-
-  .btn-undo:hover {
-    border-color: var(--ink-faint);
-    color: var(--ink);
+  .lookup-input::placeholder { color: var(--ink-faint); font-style: italic; }
+  .lookup-input:focus { border-color: var(--gold); }
+  .btn-lookup {
+    background: var(--rust); color: var(--paper);
+    border: 1px solid var(--rust); font-family: var(--font-body);
+    font-size: 14px; padding: 7px 16px; border-radius: 3px;
+    cursor: pointer; transition: all 0.18s; white-space: nowrap;
   }
+  .btn-lookup:hover { background: #a8481f; }
 
-  /* Rhymes area */
+  /* ── Rhymes area ──────────────────────────────────────────────────── */
   .rhymes-area {
-    flex: 1;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
+    flex: 1; overflow: hidden;
+    display: flex; flex-direction: column; padding: 0;
   }
-
   .rhymes-scroll {
-    flex: 1;
-    overflow-y: auto;
+    flex: 1; overflow-y: auto;
     padding: 8px 28px 20px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--divider) transparent;
+    scrollbar-width: thin; scrollbar-color: var(--divider) transparent;
   }
-
   .rhymes-scroll::-webkit-scrollbar { width: 5px; }
   .rhymes-scroll::-webkit-scrollbar-track { background: transparent; }
   .rhymes-scroll::-webkit-scrollbar-thumb { background: var(--divider); border-radius: 3px; }
 
   .rhymes-empty {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--ink-faint);
-    font-style: italic;
-    font-size: 15px;
-    line-height: 1.8;
+    text-align: center; padding: 40px 20px;
+    color: var(--ink-faint); font-style: italic;
+    font-size: 15px; line-height: 1.8;
   }
-
-  .rhymes-empty .ornament {
-    display: block;
-    font-size: 28px;
-    margin-bottom: 12px;
-    opacity: 0.4;
-  }
+  .rhymes-empty .ornament { display: block; font-size: 28px; margin-bottom: 12px; opacity: 0.4; }
 
   /* Rhyme group */
-  .rhyme-group {
-    margin-bottom: 24px;
-    animation: fadeSlideIn 0.3s ease both;
-  }
-
+  .rhyme-group { margin-bottom: 24px; animation: fadeSlideIn 0.3s ease both; }
   @keyframes fadeSlideIn {
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   .rhyme-group-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
   }
-
   .rhyme-group-word {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--rust);
-    font-style: italic;
+    font-family: var(--font-display); font-size: 15px;
+    font-weight: 600; color: var(--rust); font-style: italic;
   }
-
-  .rhyme-group-line {
-    flex: 1;
-    height: 1px;
-    background: var(--divider);
-  }
+  .rhyme-group-line { flex: 1; height: 1px; background: var(--divider); }
 
   .rhyme-row {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 10px;
-    padding: 6px 0;
+    display: grid; grid-template-columns: 130px 1fr;
+    gap: 10px; padding: 6px 0;
     border-bottom: 1px solid rgba(200,185,154,0.4);
     align-items: baseline;
   }
-
-  .rhyme-row:last-child { border-bottom: none; }
-
+  .rhyme-row:last-of-type { border-bottom: none; }
   .rhyme-word {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--sage);
+    font-family: var(--font-display); font-size: 15px;
+    font-weight: 600; color: var(--sage);
   }
+  .rhyme-def { font-size: 13.5px; color: var(--ink-faint); font-style: italic; line-height: 1.5; }
 
-  .rhyme-def {
-    font-size: 13.5px;
-    color: var(--ink-faint);
-    font-style: italic;
-    line-height: 1.5;
+  /* See more button */
+  .see-more-btn {
+    display: block; width: 100%;
+    background: transparent; border: 1px dashed var(--divider);
+    color: var(--ink-faint); font-family: var(--font-body);
+    font-size: 13px; font-style: italic;
+    padding: 6px 0; border-radius: 3px;
+    cursor: pointer; margin-top: 6px;
+    transition: all 0.18s;
   }
+  .see-more-btn:hover { border-color: var(--gold); color: var(--gold); }
 
   /* Loading spinner */
   .loading-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    color: var(--ink-faint);
-    font-style: italic;
-    font-size: 14px;
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0; color: var(--ink-faint);
+    font-style: italic; font-size: 14px;
   }
-
   .spinner {
     width: 16px; height: 16px;
-    border: 2px solid var(--divider);
-    border-top-color: var(--gold);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    flex-shrink: 0;
+    border: 2px solid var(--divider); border-top-color: var(--gold);
+    border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0;
   }
-
   @keyframes spin { to { transform: rotate(360deg); } }
 
   /* ── Right pane ───────────────────────────────────────────────────── */
   .right-pane {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background: var(--paper-dark);
-    overflow: hidden;
-    position: relative;
+    flex: 1; display: flex; flex-direction: column;
+    background: var(--paper-dark); overflow: hidden; position: relative;
   }
-
-  /* Decorative texture overlay */
   .right-pane::before {
     content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 27px,
-        rgba(200,185,154,0.18) 27px,
-        rgba(200,185,154,0.18) 28px
-      );
-    pointer-events: none;
-    z-index: 0;
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 27px,
+      rgba(200,185,154,0.18) 27px, rgba(200,185,154,0.18) 28px
+    );
+    pointer-events: none; z-index: 0;
   }
-
   .poem-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 36px 14px;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 1;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 36px 14px; flex-shrink: 0;
+    position: relative; z-index: 1;
     border-bottom: 1px solid var(--divider);
   }
-
   .poem-header-title {
-    font-family: var(--font-display);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
+    font-family: var(--font-display); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint);
   }
+  .poem-header-right { display: flex; align-items: center; gap: 14px; }
+  .poem-line-count { font-size: 12px; color: var(--ink-faint); font-style: italic; }
 
-  .poem-line-count {
-    font-size: 12px;
-    color: var(--ink-faint);
-    font-style: italic;
+  /* Upload button */
+  .btn-upload {
+    background: transparent; color: var(--ink-faint);
+    border: 1px solid var(--divider); font-family: var(--font-body);
+    font-size: 12px; padding: 4px 12px; border-radius: 3px;
+    cursor: pointer; transition: all 0.18s;
   }
+  .btn-upload:hover { border-color: var(--gold); color: var(--gold); }
 
+  /* Poem textarea (editable right pane) */
   .poem-scroll {
-    flex: 1;
-    overflow-y: auto;
+    flex: 1; overflow-y: auto;
     padding: 36px 48px 48px;
-    position: relative;
-    z-index: 1;
-    scrollbar-width: thin;
-    scrollbar-color: var(--divider) transparent;
+    position: relative; z-index: 1;
+    scrollbar-width: thin; scrollbar-color: var(--divider) transparent;
   }
-
   .poem-scroll::-webkit-scrollbar { width: 5px; }
   .poem-scroll::-webkit-scrollbar-track { background: transparent; }
   .poem-scroll::-webkit-scrollbar-thumb { background: var(--divider); border-radius: 3px; }
 
-  .poem-empty {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--ink-faint);
-    font-family: var(--font-verse);
-    font-style: italic;
-    font-size: 18px;
-    line-height: 2;
-    opacity: 0.6;
+  /* The editable poem textarea */
+  #poemEditor {
+    width: 100%; height: 100%; min-height: 300px;
+    font-family: var(--font-verse); font-size: 21px;
+    line-height: 2; color: var(--ink);
+    background: transparent; border: none; outline: none;
+    resize: none; overflow: visible;
+    caret-color: var(--gold);
+    spellcheck: true;
+  }
+  #poemEditor::placeholder {
+    color: var(--ink-faint); font-style: italic; opacity: 0.6;
   }
 
-  .poem-line {
-    font-family: var(--font-verse);
-    font-size: 21px;
-    line-height: 2;
-    color: var(--ink);
-    letter-spacing: 0.01em;
-    animation: lineAppear 0.4s ease both;
-  }
-
-  @keyframes lineAppear {
-    from { opacity: 0; transform: translateX(-6px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-
-  .poem-line.blank-line {
-    height: 21px;
-    display: block;
-  }
-
-  /* ── Toast notification ───────────────────────────────────────────── */
+  /* ── Toast ────────────────────────────────────────────────────────── */
   .toast {
-    position: fixed;
-    bottom: 28px;
-    left: 50%;
+    position: fixed; bottom: 28px; left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--font-body);
-    font-size: 14px;
-    padding: 10px 24px;
-    border-radius: 3px;
-    opacity: 0;
-    transition: all 0.25s ease;
-    pointer-events: none;
-    z-index: 100;
-    white-space: nowrap;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--font-body); font-size: 14px;
+    padding: 10px 24px; border-radius: 3px;
+    opacity: 0; transition: all 0.25s ease;
+    pointer-events: none; z-index: 100; white-space: nowrap;
   }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  .toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  /* ── Responsive tweaks ────────────────────────────────────────────── */
   @media (max-width: 700px) {
     main { flex-direction: column; }
     .left-pane { width: 100%; min-width: unset; border-right: none; border-bottom: 1px solid var(--divider); height: 55vh; }
@@ -502,7 +325,6 @@
 <body>
 <div class="app">
 
-  <!-- Header -->
   <header>
     <div class="header-title">
       <h1>✦ Poetry Writer</h1>
@@ -514,13 +336,12 @@
     </div>
   </header>
 
-  <!-- Main split -->
   <main>
 
-    <!-- Left pane: entry + rhymes -->
+    <!-- Left pane -->
     <div class="left-pane">
 
-      <!-- Input section -->
+      <!-- Line input -->
       <div class="pane-section input-area">
         <div class="section-label">Write your line</div>
         <textarea
@@ -536,56 +357,83 @@
         </p>
         <div class="btn-row">
           <button class="btn-add" onclick="submitLine()">Add Line &nbsp;↵</button>
-          <button class="btn-undo" onclick="undoLine()">Undo</button>
+          <button class="btn-secondary" onclick="undoLine()">Undo</button>
         </div>
       </div>
 
-      <!-- Rhymes section -->
+      <!-- Rhyme lookup (feature 3: look up any word without adding to poem) -->
+      <div class="pane-section lookup-area">
+        <div class="section-label">Look up any word</div>
+        <div class="lookup-row">
+          <input
+            type="text"
+            class="lookup-input"
+            id="lookupInput"
+            placeholder="Type any word…"
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button class="btn-lookup" onclick="lookupWord()">See Rhymes</button>
+        </div>
+      </div>
+
+      <!-- Rhymes panel -->
       <div class="rhymes-area" style="border-top: 1px solid var(--divider);">
         <div class="section-label" style="padding: 14px 28px 0; flex-shrink:0;">Rhyme suggestions</div>
         <div class="rhymes-scroll" id="rhymesScroll">
           <div class="rhymes-empty" id="rhymesEmpty">
             <span class="ornament">❧</span>
-            Type a line above and place <code style="font-style:normal; background:var(--paper-mid); padding:1px 5px; border-radius:2px; font-size:13px; color:var(--rust);">#</code> after a word<br>
-            to see rhymes for it here
+            Put <code style="font-style:normal; background:var(--paper-mid); padding:1px 5px; border-radius:2px; font-size:13px; color:var(--rust);">#</code> after a word in your line,<br>
+            or use the lookup box above
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- Right pane: poem view -->
+    <!-- Right pane: editable poem -->
     <div class="right-pane">
       <div class="poem-header">
         <span class="poem-header-title">Your Poem</span>
-        <span class="poem-line-count" id="lineCount">0 lines</span>
-      </div>
-      <div class="poem-scroll" id="poemScroll">
-        <div class="poem-empty" id="poemEmpty">
-          Begin, and the words will follow…
+        <div class="poem-header-right">
+          <!-- Feature 4: upload .txt -->
+          <input type="file" id="fileUpload" accept=".txt" style="display:none" onchange="uploadPoem(event)">
+          <button class="btn-upload" onclick="document.getElementById('fileUpload').click()">↑ Upload .txt</button>
+          <span class="poem-line-count" id="lineCount">0 lines</span>
         </div>
+      </div>
+      <!-- Feature 2: editable textarea instead of read-only div -->
+      <div class="poem-scroll">
+        <textarea
+          id="poemEditor"
+          placeholder="Begin, and the words will follow…"
+          spellcheck="true"
+          autocomplete="off"
+          oninput="syncEditorToLines()"
+        ></textarea>
       </div>
     </div>
 
   </main>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
+
+<!-- Hidden file input handled above -->
 
 <script>
 // ── State ──────────────────────────────────────────────────────────────
-const poemLines = [];
+let poemLines = [];
 
 // ── DOM refs ───────────────────────────────────────────────────────────
 const lineInput    = document.getElementById('lineInput');
+const lookupInput  = document.getElementById('lookupInput');
 const rhymesScroll = document.getElementById('rhymesScroll');
 const rhymesEmpty  = document.getElementById('rhymesEmpty');
-const poemScroll   = document.getElementById('poemScroll');
-const poemEmpty    = document.getElementById('poemEmpty');
+const poemEditor   = document.getElementById('poemEditor');
 const lineCount    = document.getElementById('lineCount');
 
-// ── Enter key ──────────────────────────────────────────────────────────
+// ── Enter key on line input ────────────────────────────────────────────
 lineInput.addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault();
@@ -593,7 +441,12 @@ lineInput.addEventListener('keydown', e => {
   }
 });
 
-// Auto-resize the textarea as the user types
+// Enter key on lookup input
+lookupInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') lookupWord();
+});
+
+// Auto-resize line input textarea
 lineInput.addEventListener('input', () => {
   lineInput.style.height = 'auto';
   lineInput.style.height = lineInput.scrollHeight + 'px';
@@ -603,31 +456,51 @@ lineInput.addEventListener('input', () => {
 function submitLine() {
   const raw = lineInput.value.trim();
 
-  // Empty input = blank line (paragraph break)
+  // Empty = blank line / stanza break
   if (!raw) {
-    poemLines.push('');
-    renderPoem();
+    poemEditor.value += (poemEditor.value.length > 0 ? '\n' : '') + '\n';
+    syncEditorToLines();
     showToast('¶  Blank line added — new stanza started');
     lineInput.focus();
     return;
   }
 
-  // Find tagged words (word#)
   const tagged = findTagged(raw);
+  const clean  = raw.replace(/#/g, '');
 
-  // Clean line (remove #) and add to poem
-  const clean = raw.replace(/#/g, '');
-  poemLines.push(clean);
-  renderPoem();
+  // Append to the editor
+  const current = poemEditor.value;
+  poemEditor.value = current + (current.length > 0 && !current.endsWith('\n') ? '\n' : '') + clean;
+  syncEditorToLines();
+
   lineInput.value = '';
   lineInput.style.height = 'auto';
   lineInput.focus();
 
-  // Fetch rhymes and stack them — don't clear old ones
+  // Scroll poem to bottom
+  poemEditor.scrollTop = poemEditor.scrollHeight;
+
   if (tagged.length > 0) {
     rhymesEmpty.style.display = 'none';
     tagged.forEach(word => fetchRhymes(word));
   }
+}
+
+// ── Sync editor textarea → poemLines array (for save / line count) ─────
+function syncEditorToLines() {
+  poemLines = poemEditor.value.split('\n');
+  const n = poemLines.filter(l => l.trim() !== '').length;
+  lineCount.textContent = `${n} line${n !== 1 ? 's' : ''}`;
+}
+
+// ── Feature 3: look up any word without adding to poem ─────────────────
+function lookupWord() {
+  const word = lookupInput.value.trim().replace(/[^a-zA-Z']/g, '');
+  if (!word) return;
+  rhymesEmpty.style.display = 'none';
+  fetchRhymes(word);
+  lookupInput.value = '';
+  lookupInput.focus();
 }
 
 // ── Find words tagged with # ───────────────────────────────────────────
@@ -636,10 +509,9 @@ function findTagged(text) {
   return [...new Set(matches)];
 }
 
-// ── Fetch rhymes from datamuse ─────────────────────────────────────────
-async function fetchRhymes(word) {
-  // Show loading row
-  const loadId = 'load-' + word;
+// ── Fetch rhymes (initial batch of 5, store full list for "see more") ──
+async function fetchRhymes(word, initialCount = 5) {
+  const loadId = 'load-' + word + '-' + Date.now();
   const loadEl = document.createElement('div');
   loadEl.className = 'loading-row';
   loadEl.id = loadId;
@@ -647,69 +519,86 @@ async function fetchRhymes(word) {
   rhymesScroll.insertBefore(loadEl, rhymesScroll.firstChild);
 
   try {
-    let url = `https://api.datamuse.com/words?rel_rhy=${encodeURIComponent(word)}&md=d&max=10`;
+    let url = `https://api.datamuse.com/words?rel_rhy=${encodeURIComponent(word)}&md=d&max=20`;
     let res = await fetch(url);
     let data = await res.json();
 
-    // Fall back to near-rhymes if nothing found
     if (!data.length) {
-      url = `https://api.datamuse.com/words?rel_nry=${encodeURIComponent(word)}&md=d&max=10`;
+      url = `https://api.datamuse.com/words?rel_nry=${encodeURIComponent(word)}&md=d&max=20`;
       res = await fetch(url);
       data = await res.json();
     }
 
-    // Remove loading row
     document.getElementById(loadId)?.remove();
 
     if (!data.length) {
-      renderRhymeGroup(word, [{ word: '(none found)', def: 'try a different word' }]);
+      renderRhymeGroup(word, [{ word: '(none found)', def: 'try a different word' }], []);
       return;
     }
 
-    const rhymes = data.map(item => {
+    const allRhymes = data.map(item => {
       const defs = item.defs || [];
       const def  = defs.length ? defs[0].split('\t').pop() : 'no definition available';
       return { word: item.word, def: def.charAt(0).toUpperCase() + def.slice(1) };
     });
 
-    renderRhymeGroup(word, rhymes);
+    const initial = allRhymes.slice(0, initialCount);
+    const rest    = allRhymes.slice(initialCount);
+    renderRhymeGroup(word, initial, rest);
 
   } catch (err) {
     document.getElementById(loadId)?.remove();
-    renderRhymeGroup(word, [{ word: 'error', def: err.message }]);
+    renderRhymeGroup(word, [{ word: 'error', def: err.message }], []);
   }
 }
 
-// ── Render a rhyme group card ──────────────────────────────────────────
-function renderRhymeGroup(word, rhymes) {
+// ── Render a rhyme group with "See more" button ────────────────────────
+function renderRhymeGroup(word, visible, hidden) {
   rhymesEmpty.style.display = 'none';
 
   const group = document.createElement('div');
   group.className = 'rhyme-group';
 
-  const header = document.createElement('div');
-  header.className = 'rhyme-group-header';
-  header.innerHTML = `
-    <span class="rhyme-group-word">${word}</span>
-    <span class="rhyme-group-line"></span>
+  // Header
+  group.innerHTML = `
+    <div class="rhyme-group-header">
+      <span class="rhyme-group-word">${word}</span>
+      <span class="rhyme-group-line"></span>
+    </div>
   `;
-  group.appendChild(header);
 
-  rhymes.forEach(({ word: rw, def }) => {
-    const row = document.createElement('div');
-    row.className = 'rhyme-row';
-    row.innerHTML = `
-      <span class="rhyme-word">${rw}</span>
-      <span class="rhyme-def">${def}</span>
-    `;
-    group.appendChild(row);
+  // Visible rows
+  const rowsContainer = document.createElement('div');
+  visible.forEach(({ word: rw, def }) => {
+    rowsContainer.appendChild(makeRhymeRow(rw, def));
   });
+  group.appendChild(rowsContainer);
 
-  // Insert newest group at the very top of the scroll container
+  // "See more" button if there are hidden rhymes
+  if (hidden && hidden.length > 0) {
+    const btn = document.createElement('button');
+    btn.className = 'see-more-btn';
+    btn.textContent = `See ${hidden.length} more rhymes…`;
+    btn.onclick = () => {
+      hidden.forEach(({ word: rw, def }) => {
+        rowsContainer.appendChild(makeRhymeRow(rw, def));
+      });
+      btn.remove();
+    };
+    group.appendChild(btn);
+  }
+
   rhymesScroll.insertBefore(group, rhymesScroll.firstChild);
 }
 
-// ── Clear rhyme panel (used only by Clear All) ─────────────────────────
+function makeRhymeRow(rw, def) {
+  const row = document.createElement('div');
+  row.className = 'rhyme-row';
+  row.innerHTML = `<span class="rhyme-word">${rw}</span><span class="rhyme-def">${def}</span>`;
+  return row;
+}
+
+// ── Clear rhymes ───────────────────────────────────────────────────────
 function clearRhymes() {
   [...rhymesScroll.children].forEach(el => {
     if (el !== rhymesEmpty) el.remove();
@@ -717,59 +606,22 @@ function clearRhymes() {
   rhymesEmpty.style.display = '';
 }
 
-// ── Render poem ────────────────────────────────────────────────────────
-function renderPoem() {
-  // Remove old lines (keep empty msg)
-  [...poemScroll.children].forEach(el => {
-    if (el !== poemEmpty) el.remove();
-  });
-
-  if (poemLines.length === 0) {
-    poemEmpty.style.display = '';
-    lineCount.textContent = '0 lines';
-    return;
-  }
-
-  poemEmpty.style.display = 'none';
-
-  poemLines.forEach((line, i) => {
-    const el = document.createElement('div');
-    if (line.trim() === '') {
-      el.className = 'poem-line blank-line';
-    } else {
-      el.className = 'poem-line';
-      el.textContent = line;
-      el.style.animationDelay = i === poemLines.length - 1 ? '0ms' : '0ms';
-      // Only animate the newest line
-      if (i < poemLines.length - 1) {
-        el.style.animation = 'none';
-        el.style.opacity = '1';
-      }
-    }
-    poemScroll.appendChild(el);
-  });
-
-  // Scroll to bottom
-  poemScroll.scrollTop = poemScroll.scrollHeight;
-
-  const n = poemLines.length;
-  lineCount.textContent = `${n} line${n !== 1 ? 's' : ''}`;
-}
-
 // ── Undo last line ─────────────────────────────────────────────────────
 function undoLine() {
-  if (poemLines.length === 0) return;
-  poemLines.pop();
-  renderPoem();
+  const val = poemEditor.value;
+  // Remove last line (including trailing newline)
+  const trimmed = val.replace(/\n?[^\n]*$/, '');
+  poemEditor.value = trimmed;
+  syncEditorToLines();
   showToast('Last line removed');
 }
 
 // ── Clear all ──────────────────────────────────────────────────────────
 function clearAll() {
-  if (poemLines.length === 0 && lineInput.value.trim() === '') return;
+  if (!poemEditor.value.trim() && !lineInput.value.trim()) return;
   if (!confirm('Clear your poem and start again?')) return;
-  poemLines.length = 0;
-  renderPoem();
+  poemEditor.value = '';
+  syncEditorToLines();
   clearRhymes();
   lineInput.value = '';
   lineInput.style.height = 'auto';
@@ -778,19 +630,33 @@ function clearAll() {
 
 // ── Save poem ──────────────────────────────────────────────────────────
 function savePoem() {
-  if (poemLines.length === 0) {
-    showToast('Nothing to save yet');
-    return;
-  }
-  const text = poemLines.join('\n');
-  const blob = new Blob([text], { type: 'text/plain' });
+  if (!poemEditor.value.trim()) { showToast('Nothing to save yet'); return; }
+  const blob = new Blob([poemEditor.value], { type: 'text/plain' });
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
-  a.href     = url;
-  a.download = 'my-poem.txt';
-  a.click();
+  a.href = url; a.download = 'my-poem.txt'; a.click();
   URL.revokeObjectURL(url);
   showToast('Poem saved');
+}
+
+// ── Feature 4: Upload .txt ─────────────────────────────────────────────
+function uploadPoem(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const text = e.target.result;
+    if (poemEditor.value.trim()) {
+      if (!confirm('Replace your current poem with the uploaded file?')) return;
+    }
+    poemEditor.value = text;
+    syncEditorToLines();
+    poemEditor.scrollTop = 0;
+    showToast(`"${file.name}" loaded — carry on writing!`);
+  };
+  reader.readAsText(file);
+  // Reset so same file can be re-uploaded
+  event.target.value = '';
 }
 
 // ── Toast ──────────────────────────────────────────────────────────────
@@ -800,10 +666,9 @@ function showToast(msg) {
   t.textContent = msg;
   t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-// ── Focus input on load ────────────────────────────────────────────────
 lineInput.focus();
 </script>
 </body>
