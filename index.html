@@ -116,7 +116,7 @@
     font-size: 22px; color: var(--ink);
     background: transparent; border: none;
     border-bottom: 2px solid var(--divider);
-    padding: 6px 0 4px; outline: none;
+    padding: 4px 0 2px; outline: none;
     transition: border-color 0.2s; line-height: 1.4;
     resize: none; overflow: hidden; display: block;
   }
@@ -406,6 +406,7 @@
       <div class="poem-scroll">
         <textarea
           id="poemEditor"
+          placeholder=""
           spellcheck="true"
           autocomplete="off"
           oninput="syncEditorToLines()"
